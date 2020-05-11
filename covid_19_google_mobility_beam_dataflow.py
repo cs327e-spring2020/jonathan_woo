@@ -31,14 +31,15 @@ class FormatCounty(beam.DoFn):
         if split[-1].upper() == 'COUNTY':
           split = split[0:-1] #exclude county string
           foundCounty = True
-          if foundCounty:
-            for i in range(0,len(split)):
-              if i == len(split) - 1:
-                returnedString += split[i]
-              else:
-                returnedString += split[i] + ' '
-          else:
-            returnedString = sub_region_2
+
+        if foundCounty:
+          for i in range(0,len(split)):
+            if i == len(split) - 1:
+              returnedString += split[i]
+            else:
+              returnedString += split[i] + ' '
+        else:
+          returnedString = sub_region_2
       else:
         returnedString = None
     else:
